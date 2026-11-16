@@ -12,4 +12,4 @@ A cosy daily historical mystery game built natively for Reddit with Devvit Web.
 ## Current status
 
 - `TC-001`: complete and recorded.
-- Batch 1 (`TC-002–TC-010`): scope prepared; not started. See Roadmap V2 for required manual actions and authorization gate.
+- Batch 1 (`TC-002–TC-010`): authorized; preflight started, currently blocked on manual prerequisites. No app implementation has started. See Roadmap V2 for scope and required actions.

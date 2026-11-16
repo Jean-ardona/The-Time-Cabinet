@@ -3,12 +3,12 @@
 
 **Approval date:** 16 November 2026  
 **Status:** Approved by the user; active execution plan.  
-**Current state:** `TC-001` complete; Batch 1 prepared but not started; implementation authorization pending.  
+**Current state:** `TC-001` complete; Batch 1 authorized and in progress, currently blocked on manual prerequisites; no app implementation has started.  
 **Current branch:** `arena/501d32bc-the-time-cabinet`  
 **Archived source backlog:** [`the-time-cabinet-task-roadmap-v1.md`](archive/the-time-cabinet-task-roadmap-v1.md)  
 **Product authority:** [`the-time-cabinet-game-bible-v1.md`](the-time-cabinet-game-bible-v1.md)
 
-> This is the active execution plan. Roadmap V1 is retained as an archived reference. The user approved one explicit authorization per batch; approval of this plan does not start Batch 1. Batch 1's exact scope and manual prerequisites are recorded below and must be reported before implementation begins.
+> This is the active execution plan. Roadmap V1 is retained as an archived reference. The user approved one explicit authorization per batch. Batch 1 is now authorized; its scope and manual prerequisites are recorded below. Do not automatically start the next batch after Batch 1.
 
 ---
 
@@ -310,11 +310,12 @@ The following are not cut by consolidation or scope reduction:
 
 ---
 
-## 8. Approved Execution State and Batch 1 Preparation
+## 8. Approved Execution State and Batch 1 Progress
 
-- **Approved active plan:** Roadmap V2, approved 16 November 2026.
-- **Completed prerequisite:** `TC-001` is `[x]`; Devpost registration, eligibility and Individual identity are recorded in `notes/hackathon-checklist.md` and in archived V1's register.
-- **Next batch:** Batch 1 (`TC-002–TC-010`) is prepared but **not started**. It covers Developer access, public test subreddit, Node/toolchain, official React/Devvit starter, dependency/template inspection, CLI auth, first real Reddit starter playtest, Git hygiene and architecture/scripts.
-- **Manual prerequisites:** Complete/confirm Reddit Developer onboarding and `/new` access; provide the public subreddit name/URL and moderator/public/<200 status; report `node -v`, `npm -v`, and `git --version` from the intended Devvit CLI environment and resolve the sandbox Node `v22.22.3` vs. required `>=24.18.0` gap; choose the final app slug and generate the official starter in the Devvit portal; complete interactive CLI login and open the returned playtest post. The exact sequence is in Batch 1 above.
-- **Authorization:** Approval of Roadmap V2 is not authorization to begin Batch 1. Wait for the user's explicit batch-start instruction after reporting this scope and these manual actions.
+- **Approved active plan:** Roadmap V2; approved 16 November 2026.
+- **Completed prerequisite:** `TC-001` is `[x]`; Devpost registration, eligibility and Individual identity are recorded in `notes/hackathon-checklist.md` and archived V1.
+- **Batch 1 status:** Authorized and in progress. Scope is `TC-002–TC-010`: Reddit Developer access, public test subreddit, toolchain, official React/Devvit starter, template install/inspection, CLI auth, real Reddit starter playtest, Git hygiene, and project constraints/scripts. No app implementation has started.
+- **Environment checked:** branch is `arena/501d32bc-the-time-cabinet`; system Node `v22.22.3`, npm `10.9.8`, Git `2.39.5`; Devvit CLI is not installed. Node `v24.18.0` was successfully invoked via `npx --yes --package=node@24.18.0 -- node --version`, but the system default remains `v22.22.3`; `TC-004` is not yet complete.
+- **Manual blockers:** Reddit Developer onboarding and `/new` access; public test subreddit name/URL and public/moderator/<200 confirmation; choice of CLI environment and its version output; final app slug and generated official starter files; interactive `npx devvit login`; first `npx devvit playtest <subreddit-name>` and confirmation that the returned post renders. No passwords, tokens or auth files should be shared.
+- **Next within Batch 1:** Once the manual prerequisites and generated template are available, inspect/install/build the template, establish project Git hygiene, and record its actual framework/scripts. Stop at the Batch 1 gate; do not start Batch 2 automatically.
 
