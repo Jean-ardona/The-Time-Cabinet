@@ -1,22 +1,22 @@
 # THE TIME CABINET
-## Proposed Roadmap V2 — Consolidation Audit
+## Roadmap V2 — Approved Execution Plan
 
-**Proposal date:** 16 November 2026  
-**Status:** Draft for user review — **does not replace Roadmap V1**  
+**Approval date:** 16 November 2026  
+**Status:** Approved by the user; active execution plan.  
+**Current state:** `TC-001` complete; Batch 1 prepared but not started; implementation authorization pending.  
 **Current branch:** `arena/501d32bc-the-time-cabinet`  
-**Current progress:** `TC-001` complete; `TC-002` not started  
-**Source backlog:** [`the-time-cabinet-task-roadmap-v1.md`](the-time-cabinet-task-roadmap-v1.md)  
+**Archived source backlog:** [`the-time-cabinet-task-roadmap-v1.md`](archive/the-time-cabinet-task-roadmap-v1.md)  
 **Product authority:** [`the-time-cabinet-game-bible-v1.md`](the-time-cabinet-game-bible-v1.md)
 
-> This is a proposed execution plan, not authorization to begin work. No application code was changed, no implementation task was started, and Roadmap V1 remains unchanged. The proposal must be approved before it replaces V1 or before `TC-002` begins.
+> This is the active execution plan. Roadmap V1 is retained as an archived reference. The user approved one explicit authorization per batch; approval of this plan does not start Batch 1. Batch 1's exact scope and manual prerequisites are recorded below and must be reported before implementation begins.
 
 ---
 
 ## 1. Executive Summary
 
-Roadmap V1 contains 85 useful traceable tasks, but many are sub-steps of the same workflow and currently imply too many separate approval/checkpoint cycles. V2 groups all 85 task IDs into **10 execution batches**. Original IDs remain the acceptance-criteria references; no ID is silently dropped.
+Roadmap V1 contains 85 useful traceable tasks, but many are sub-steps of the same workflow and currently imply too many separate approval/checkpoint cycles. V2 groups all 85 task IDs into **10 execution batches**. Original IDs remain the acceptance-criteria references; no ID is dropped.
 
-The proposed critical path is:
+The execution critical path is:
 
 1. Get the official Devvit starter running in a real Reddit post.
 2. Establish only the shared contracts and accessible visual shell needed for the game.
@@ -27,9 +27,9 @@ The proposed critical path is:
 
 **Important distinction:** the first playable gate is a **vertical slice** using Letter Mixer; it is not permission to claim the full six-puzzle V1 is complete. The full V1 scope is retained as important P1 work.
 
-### Proposed execution control
+### Approved execution control
 
-Instead of requesting authorization for every small TC-ID, V2 proposes **one explicit authorization per batch**, with a stop/report at that batch's acceptance gate. Each task ID keeps its individual acceptance criteria and dependencies. This changes the approval cadence only if you approve V2; until then, the existing one-task-at-a-time instruction remains in force.
+Use **one explicit authorization per batch**, then stop and report at that batch's acceptance gate. Each original task ID keeps its individual acceptance criteria and dependency trace. A batch is not considered complete—and none of its task IDs is marked `[x]`—until the relevant original `Done when` criteria are verified. Partial early UI work does not count as completing a larger task. Do not automatically start the next batch.
 
 ---
 
@@ -41,15 +41,15 @@ A player must be able to open a native Reddit Interactive Post, solve a complete
 
 ### P1 — Important V1 improvements
 
-Complete the intended six-puzzle library, seven unique verified dossier target, locally bundled/licensed typography, broader polished UI states, scheduled posting (if retained at P1), external playtesting, and visual refinement after the P0 loop is working. These are not allowed to delay the first complete playable Reddit mystery. Any proposed cut below the V1 target must be explicit and approved; it is not silently waived.
+Complete the intended six-puzzle library, at least seven unique verified dossiers, locally bundled/licensed typography, broader polished UI states, external playtesting, and visual refinement after the P0 loop is working. These are not allowed to delay the first complete playable Reddit mystery. Any proposed cut below the V1 target must be explicit and approved; it is not silently waived.
 
 ### P2 — Optional / post-MVP
 
-Features that can be postponed past hackathon submission without compromising the central mystery loop. They never block the first Reddit build or the required Devpost submission.
+Scheduled-post automation (`TC-060`), the optional demo video (`TC-078`), and stretch features can be postponed past hackathon submission without compromising the central mystery loop. They never block the first Reddit build or required Devpost submission.
 
 ---
 
-## 3. The 10 Proposed Execution Batches
+## 3. The 10 Approved Execution Batches
 
 ### Batch 1 — Account access, Devvit starter, and clean baseline
 
@@ -63,6 +63,16 @@ Features that can be postponed past hackathon submission without compromising th
 **Batch gate:** The official generated Devvit Web starter builds and renders in a real Reddit playtest post on the public test subreddit. The required Node version and actual template scripts/framework are recorded; the repository has a clean baseline and excludes secrets/auth files.
 
 **Acceptance criteria retained:** The subreddit must be public, moderated by the owner, and kept below 200 members/subscribers. Do not substitute a standalone Vite site for the Devvit template. Do not commit CLI credentials or auth files.
+
+**Manual actions required for Batch 1 (not yet completed/verified):**
+
+1. Sign in to the Reddit account that will own the app, finish Developer onboarding at <https://developers.reddit.com/>, and confirm access to <https://developers.reddit.com/new> (`TC-002`). Do not share credentials.
+2. Create or select the public test subreddit; confirm moderator rights, public visibility, and fewer than 200 members/subscribers. Share its exact name and URL (`TC-003`).
+3. Resolve the Node version gap before dependency installation: the inspected sandbox is Node `v22.22.3`, while `TC-004` specifies `>=24.18.0`. Report `node -v`, `npm -v`, and `git --version` from the environment intended for CLI/playtest; agree whether the sandbox or your local machine is the Devvit CLI environment.
+4. In the Devvit portal, select the official React/Devvit Web starter, choose the final app slug, generate the project, and make those generated project files available on this branch (`TC-005`). Share the chosen slug.
+5. Complete interactive CLI login on the authorized machine with `npx devvit login`, then run `npx devvit playtest <subreddit-name>` after setup; open the returned Reddit post and confirm the starter renders (`TC-007–TC-008`). Never paste auth tokens or private auth files.
+
+**Agent-owned work once Batch 1 is authorized and prerequisites are available:** inspect the generated template, install its dependencies using the template's lockfile/package manager, run its actual build/type checks, establish safe Git hygiene/baseline, and document the template constraints/scripts (`TC-006`, `TC-009–TC-010`). Do not claim a check or playtest passed until it has actually run.
 
 ---
 
@@ -122,7 +132,7 @@ Features that can be postponed past hackathon submission without compromising th
 
 **Batch gate (TC-034):** Inside a real Reddit Interactive Post, a player can open the case, solve Letter Mixer, receive exactly one server-approved clue, make a wrong guess without losing/editing progress, later guess correctly and see the sourced dossier, then refresh/reopen and resume. The server—not client state—decides puzzle success and answer correctness. A client-supplied `userId` is never trusted; accepted aliases and locked clues are not leaked before solving.
 
-**Date clarification proposed:** Retain Apollo 11 as the `TC-027` test fixture and validate it in tests. For the live Reddit daily experience, use the `TC-042` event whose month/day matches the displayed challenge date. This resolves the tension between the original `TC-034` Apollo test fixture and the locked daily-date rule without pretending a mismatched date is a valid daily case.
+**Approved date rule:** Retain Apollo 11 as the `TC-027` development fixture and validate it in tests. For the live Reddit daily experience, use the `TC-042` event whose month/day matches the displayed challenge date. Never use Apollo 11 for an unrelated daily date or treat the development fixture as the live event unless it independently matches that date.
 
 **Early checkpoint:** This is the earliest intended end-to-end product gate. Do not wait for all six puzzles, the full dossier library, a scheduler, or optional effects before reaching it.
 
@@ -135,7 +145,7 @@ Features that can be postponed past hackathon submission without compromising th
 
 **Combine:** Compatibility filter; seeded sequence and progression/fallback rules; frozen shared daily case; UTC/leap-day selection; unit tests for domain/answers/generation; moderator manual post action; idempotent creation; public demo-sub/date verification.
 
-**Dependencies:** Batch 2 (`TC-014`, `TC-026`), Batch 4 (`TC-050`), and Batch 5 (`TC-030`, `TC-054` persistence needs). `TC-059` also requires the real starter playtest from Batch 1. `TC-061` follows the manual route. `TC-063` follows the subreddit and manual post.
+**Dependencies:** Batch 2 (`TC-014`, `TC-026`), Batch 4 (`TC-050`), and Batch 5 (`TC-030` Redis repository/persistence). `TC-054` freezes the sequence using that repository; `TC-059` also requires the real starter playtest from Batch 1. `TC-061` follows the manual route. `TC-063` follows the subreddit and manual post.
 
 **Batch gate:** The public demo post opens one frozen event/puzzle sequence shared by all players; the daily ID uses UTC; Feb 29 is explicit; the event date matches the challenge date; sequence choices only use compatible authored options; ordering starts broad and becomes more identifying; repeated templates are avoided when alternatives exist; invalid content is rejected rather than fabricated. Repeated moderator/scheduler requests do not create duplicate posts. The public test post is playable without joining a private subreddit and the subreddit remains below 200 members.
 
@@ -156,7 +166,7 @@ Features that can be postponed past hackathon submission without compromising th
 
 **Batch gate:** All six core puzzles are complete and server-validated; Timeline Sort has keyboard/tap arrow controls (not drag-only); Who Am I? is solvable from the supplied evidence; Pixel Reveal uses an identifiable, licensed local asset with non-spoiling alt text; all templates work with the clue shelf/guess flow; all six pass correct/incorrect/incomplete/retry/forged-answer tests.
 
-**Content target:** Preserve the Game Bible's target of **at least seven unique complete verified dossiers**, including the actual demo event. Keep the required facts, sources, aliases, minimum clue/puzzle coverage, and calendar-date accuracy. `TC-043–TC-048` are a pool of authored content, not permission to duplicate one event or inflate the count with the same record twice. See the explicit `TC-048` sizing recommendation in Section 5.
+**Content target:** Preserve the Game Bible's target of **at least seven unique complete verified dossiers**, including the actual demo event. Keep the required facts, sources, aliases, minimum clue/puzzle coverage, and calendar-date accuracy. Complete the original acceptance criteria for `TC-043–TC-048`, including `TC-048`'s two additional verified dossiers; count unique events only and never duplicate a record to inflate the total.
 
 **Asset acceptance:** No uncertain images, fonts, or sounds. Record creator, source URL, licence, attribution and local path. Start provenance when each asset is introduced; complete the full audit before release.
 
@@ -165,7 +175,7 @@ Features that can be postponed past hackathon submission without compromising th
 ### Batch 8 — Optional post automation and community-post refinements
 
 **Source IDs:** `TC-060`, `TC-062`.  
-**Priority:** P1 in V1; proposed to be treated as non-blocking, with `TC-060` considered for P2 reclassification.
+**Approved priority:** `TC-060` is P2 (reclassified from P1); `TC-062` remains P1. Neither is on the first playable mystery's critical path.
 
 **Combine:** Scheduled daily post creation, using the same idempotent service as the moderator action; concise Reddit fallback post text and a spoiler-safe discussion prompt.
 
@@ -195,25 +205,25 @@ Features that can be postponed past hackathon submission without compromising th
 ### Batch 10 — Submission, deadline and judging availability
 
 **Source IDs:** `TC-075–TC-080`.  
-**Priority mix:** P0 `TC-075–TC-077`, `TC-079`; P1 `TC-080`; optional video recommendation for `TC-078` is in Section 5.
+**Priority mix:** P0 `TC-075–TC-077`, `TC-079`; P1 `TC-080`; P2 optional video `TC-078`.
 
 **Combine:** English root README; stable private Devvit upload and app URL; complete Devpost text and required links; final submission receipt; optional short demo video; maintain the public demo during judging.
 
 **Dependencies:** Batches 6 and 9. Keep the app uploaded/private as the hackathon requests; do not initiate broad App Review publishing unless official rules change or the user explicitly approves it.
 
-**Batch gate:** Devpost confirms receipt before **8 Dec 2026, 6:00 p.m. Pacific / 9 Dec 2026, 04:00 Burundi time**; app listing, public subreddit and direct demo post links are correct; README and Devpost instructions are clear and in English; assets are licensed; the demo remains free and accessible through judging.
+**Batch gate:** Devpost confirms receipt before **8 Dec 2026, 6:00 p.m. Pacific / 9 Dec 2026, 04:00 Burundi time**; app listing, public subreddit and direct demo post links are correct; README and Devpost instructions are clear and in English; assets are licensed; the demo remains free and accessible through judging. Internal target: **8 Dec 2026, 04:00 Burundi time**.
 
-**Proposed dependency correction:** `TC-079` must **not** depend on `TC-078` because the video is optional under the official submission rules. Proposed P0 dependency: `TC-063`, `TC-075–TC-077`; include `TC-078` only if voluntarily completed. The 24-hour-early target remains **8 Dec 2026, 04:00 Burundi time**.
+**Approved dependency rule:** `TC-079` does **not** depend on P2 task `TC-078`; include the video only if it is voluntarily completed. Required submission dependencies remain `TC-063`, `TC-075–TC-077`. A P0 upload may be used to secure the app URL once the required release checks pass; after any later P1 polish, upload and smoke-test the final submission build again.
 
 ---
 
 ## 4. Task-ID Crosswalk
 
-Every V1 task remains represented in a proposed batch. The V1 document retains the detailed per-task actions and acceptance criteria until V2 is approved.
+Every V1 task remains represented in an approved batch. The archived V1 document retains the detailed per-task actions and acceptance criteria for traceability; V2's batching does not mark a task complete by itself.
 
-| V1 task IDs | Proposed batch | V2 priority treatment |
+| V1 task IDs | Approved batch | V2 priority treatment |
 |---|---:|---|
-| `TC-001` | Completed prerequisite | Already `[x]`; no new action proposed. |
+| `TC-001` | Completed prerequisite | Already `[x]` and recorded; no further action needed. |
 | `TC-002`, `TC-003`, `TC-004`, `TC-005`, `TC-006`, `TC-007`, `TC-008`, `TC-009`, `TC-010` | 1 | P0 setup and first real Reddit starter gate. |
 | `TC-011`, `TC-012`, `TC-013`, `TC-014`, `TC-015`, `TC-026` | 2 | P0 domain, generator primitive, test gate and template contract. |
 | `TC-016`, `TC-017`, `TC-018`, `TC-019`, `TC-020`, `TC-021`, `TC-022`, `TC-023`, `TC-024`, `TC-025` | 3 | P0 minimum game shell/accessibility; P1 font, dedicated cover and fuller state/component polish. |
@@ -221,14 +231,14 @@ Every V1 task remains represented in a proposed batch. The V1 document retains t
 | `TC-028`, `TC-029`, `TC-030`, `TC-031`, `TC-032`, `TC-033`, `TC-034`, `TC-057`, `TC-058`, `TC-066` | 5 | P0 first Reddit vertical slice, security and API/Redis integration tests. |
 | `TC-051`, `TC-052`, `TC-053`, `TC-054`, `TC-055`, `TC-059`, `TC-061`, `TC-063`, `TC-064` | 6 | P0 daily sequence/date/freeze, manual public post, idempotency, verification and logic tests. |
 | `TC-035`, `TC-036`, `TC-037`, `TC-038`, `TC-039`, `TC-040`, `TC-043`, `TC-044`, `TC-045`, `TC-046`, `TC-047`, `TC-048`, `TC-049`, `TC-056`, `TC-065` | 7 | P1 full core library/content; P0 licence/provenance compliance before release. |
-| `TC-060`, `TC-062` | 8 | P1 V1 refinements; scheduling is proposed as non-blocking and considered for P2. |
+| `TC-060`, `TC-062` | 8 | P2 scheduled-post automation (`TC-060`); P1 fallback text/discussion prompt (`TC-062`). |
 | `TC-067`, `TC-068`, `TC-069`, `TC-070`, `TC-071`, `TC-072`, `TC-073`, `TC-074` | 9 | P0 integrated QA; P1 external testing and finishing polish. |
-| `TC-075`, `TC-076`, `TC-077`, `TC-078`, `TC-079`, `TC-080` | 10 | P0 submission; P1 judging availability; optional video not a submission dependency. |
+| `TC-075`, `TC-076`, `TC-077`, `TC-078`, `TC-079`, `TC-080` | 10 | P0 submission; P1 judging availability; P2 optional video is not a submission dependency. |
 | `TC-081`, `TC-082`, `TC-083`, `TC-084`, `TC-085` | Post-submission backlog | P2; do not start before stable submission. |
 
 ---
 
-## 5. Merge, Defer, Reclassify — Explicit Recommendations
+## 5. Merged Workflows, Approved Deferrals, and Priority Decisions
 
 ### Workflows merged to reduce overhead
 
@@ -243,44 +253,43 @@ Every V1 task remains represented in a proposed batch. The V1 document retains t
 
 ### Work explicitly deferred, not deleted
 
-- Dedicated cover polish (`TC-019`), bundled typefaces (`TC-017`), comprehensive secondary loading/empty states (`TC-024`), automated scheduling (`TC-060`), and the other five puzzles are not prerequisites to the first Letter Mixer loop. Complete them in their listed batches before calling the intended V1 done, according to the approved priority.
-- Seven dossiers remain the **V1 target**; only one verified, date-matched event is required for the first playable demo gate. Do not author several events before the full Reddit loop works.
-- Map Hunt, Cause & Effect, hints, sound and retention features (`TC-081–TC-085`) remain post-MVP P2.
-- No Pixel Reveal image, external media, font, or audio should be pulled into the early slice simply for decoration. Use safe CSS/system fallbacks until a licensed asset is ready.
+- Dedicated cover polish (`TC-019`), bundled typefaces (`TC-017`), comprehensive secondary loading/empty states (`TC-024`), and the other five puzzles are not prerequisites to the first Letter Mixer loop. Complete their full original acceptance criteria in the assigned batches before calling the intended V1 done.
+- Scheduled-post automation (`TC-060`, approved P2) and the optional demo video (`TC-078`, approved P2) are deferred until the core game and required submission are stable; neither can delay the public playable mystery or submission.
+- The intended V1 content floor remains **at least seven unique, fully verified dossiers**. Complete the archived V1 acceptance criteria for `TC-043–TC-048`, including authoring two additional verified dossiers under `TC-048`. Count unique events only; if one event overlaps another, author a distinct replacement rather than lowering the floor.
+- Map Hunt, Cause & Effect, hints, sound and retention features (`TC-081–TC-085`) remain P2/post-MVP.
+- Do not pull in an image, font, external media or audio before its licence/provenance is verified. The early Letter Mixer slice can use CSS and system font fallbacks.
 
-### Priority changes proposed for approval (not silently applied)
+### Approved priority and dependency decisions
 
-1. **`TC-060` scheduled post job:** Recommend P1 → **P2** if a verified manual moderator post action is sufficient for the hackathon demo. Keep the scheduler task and its acceptance criteria; defer it unless daily operations or the judges require automation.
-2. **`TC-078` demo video:** Recommend P1 → **P2 / optional** because the official rules make it optional. Keep it on the backlog, but do not let it block `TC-079`.
-3. **`TC-048` two additional dossiers:** Keep the task ID but size its work to **top up to seven unique dossiers**, rather than unconditionally authoring two more. If the first daily event, Apollo dossier and four named dossiers are all distinct, one additional dossier reaches seven; the other is optional. This does not reduce the Game Bible's minimum-seven target.
-4. **`TC-018`, `TC-024`:** The minimal reusable components and basic loading/pending/error handling required for a safe first playthrough are part of P0; the broader component/state inventory remains P1. No core error handling is removed.
-5. **`TC-076` dependency:** Recommend allowing a tested P0 build to be uploaded once P0 release checks pass, without making optional/P1 video or non-critical polish a hard gate. Re-upload/re-smoke-test after any later changes.
+1. **`TC-060` scheduled post job:** P1 → **P2**. Keep the task and its original acceptance criteria, but defer it; the verified manual moderator action (`TC-059`) is the required fallback.
+2. **`TC-078` demo video:** P1 → **P2 / optional**. Keep the task available, but it is not a hard dependency of `TC-079` because the official rules make the video optional.
+3. **`TC-048` content acceptance:** No reduction is approved. Preserve its original requirement to author two additional verified dossiers, while maintaining the separate minimum of seven unique dossiers for V1.
+4. **`TC-018` and `TC-024`:** A minimum usable subset is implemented early for the safe vertical slice, but the corresponding task IDs are not marked complete until their full archived V1 `Done when` criteria are met.
+5. **`TC-076` release ordering:** A tested P0 upload may secure the app listing URL once mandatory release checks pass. If later P1 polish changes the build, upload and smoke-test the final submission build again; the original upload acceptance still applies.
 
-### No tasks are removed in this proposal
+### No tasks are removed
 
-All `TC-001–TC-085` are mapped. P2 means explicitly deferred until after the mandatory submission path is stable, not erased. Any task that the user ultimately decides to remove should be marked `[-]` in the approved roadmap with a brief rationale.
+All `TC-001–TC-085` are mapped. P2 means explicitly deferred, not erased. Each ID remains traceable to its archived V1 actions and acceptance criteria; mark a task complete only after those criteria are actually verified.
 
 ---
 
-## 6. Audit Findings Requiring a Clear Decision
+## 6. Accepted Date and Content Constraints
 
-### A. Seven dossiers vs. every calendar day
+### A. Date coverage — no unverified fallback (approved)
 
-The Game Bible requires one event for each UTC daily challenge whose historical month/day matches that challenge date, while the content target says at least seven complete dossiers. Seven events alone do not provide year-round date coverage. V1 does not define how dates with no matching authored event are handled.
+The V1 floor of seven dossiers does not provide verified content for every calendar date. The approved rule is: **do not invent or reuse an event for a date without verified matching content.** A daily post may be created only when a verified dossier matches that challenge's month/day. If no match exists, do not create a playable post for that date; add a new sourced, date-matched dossier before scheduling it. The seven-dossier minimum remains the V1 content floor, not a claim of year-round calendar coverage.
 
-**Safe interim behavior:** For the hackathon demo, choose and verify an event matching the displayed demo date; create only posts for dates with a valid matching dossier; never silently reuse a different-date event, shift the date, or invent a fallback. Before implementing `TC-055` as an unrestricted daily service, approve whether the intended release needs year-round date coverage or only the planned hackathon/demo dates. If year-round coverage is required, the content scope must be expanded beyond seven; this proposal does not pretend that it is solved.
+### B. Apollo fixture and live demo (approved)
 
-### B. Demo date and Apollo fixture
+`TC-027` remains the Apollo 11 development fixture for testing. `TC-042` supplies the actual live demo event, and its historical month/day must match the displayed challenge date. These are separate roles; do not mark the date-match gate complete using a mismatched Apollo fixture.
 
-`TC-027` expressly calls Apollo 11 a development fixture, not automatically the current daily event. Keep it for deterministic testing and use `TC-042` for the date-matched live demo. This is an acceptance clarification, not deletion of the Apollo fixture or historical content.
+### C. Optional video dependency (approved)
 
-### C. Optional video dependency
+`TC-078` is P2 and optional. It is not a hard dependency of `TC-079`; skipping it does not make a compliant submission late or incomplete.
 
-`TC-078` is optional but currently appears in `TC-079`'s dependency range. V2 proposes to remove that hard dependency while keeping the task available. Skipping the video must not make a compliant project late or incomplete.
+### D. Unique dossier count (approved)
 
-### D. Number of dossiers
-
-The current named content tasks can produce more than seven dossiers, depending on whether the demo event overlaps Apollo 11. Count **unique event records**; avoid a second copy of the same story. The minimum seven is retained; the 10–14 target remains optional.
+Count unique, complete, verified event records only. Complete all original content-task acceptance criteria and maintain at least seven dossiers for intended V1; the 10–14 range remains optional.
 
 ---
 
@@ -301,14 +310,11 @@ The following are not cut by consolidation or scope reduction:
 
 ---
 
-## 8. Proposed Approval Point
+## 8. Approved Execution State and Batch 1 Preparation
 
-Please review this proposal, especially:
+- **Approved active plan:** Roadmap V2, approved 16 November 2026.
+- **Completed prerequisite:** `TC-001` is `[x]`; Devpost registration, eligibility and Individual identity are recorded in `notes/hackathon-checklist.md` and in archived V1's register.
+- **Next batch:** Batch 1 (`TC-002–TC-010`) is prepared but **not started**. It covers Developer access, public test subreddit, Node/toolchain, official React/Devvit starter, dependency/template inspection, CLI auth, first real Reddit starter playtest, Git hygiene and architecture/scripts.
+- **Manual prerequisites:** Complete/confirm Reddit Developer onboarding and `/new` access; provide the public subreddit name/URL and moderator/public/<200 status; report `node -v`, `npm -v`, and `git --version` from the intended Devvit CLI environment and resolve the sandbox Node `v22.22.3` vs. required `>=24.18.0` gap; choose the final app slug and generate the official starter in the Devvit portal; complete interactive CLI login and open the returned playtest post. The exact sequence is in Batch 1 above.
+- **Authorization:** Approval of Roadmap V2 is not authorization to begin Batch 1. Wait for the user's explicit batch-start instruction after reporting this scope and these manual actions.
 
-1. The proposed **10-batch** execution model and one authorization per batch.
-2. The P2 reclassification recommendations for `TC-060` and `TC-078`.
-3. The `TC-048` adjustment to author only enough unique dossiers to reach seven.
-4. The unresolved year-round calendar coverage requirement.
-5. The live-slice date clarification: Apollo 11 remains the test fixture; the actual public demo uses the verified event matching its challenge date.
-
-Until you approve Roadmap V2, **Roadmap V1 remains the active plan, `TC-002` remains not started, and no implementation work should begin.**

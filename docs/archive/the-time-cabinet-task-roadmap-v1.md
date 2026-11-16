@@ -6,7 +6,7 @@
 **Platform:** Reddit / Devvit Web / Interactive Posts  
 **Base specification:** `the-time-cabinet-game-bible-v1.md`  
 **Purpose:** A complete, ordered backlog that can be executed **one task at a time**.  
-**Status:** In execution — task completion tracked in Section 2 (`TC-001` complete).
+**Status:** Archived reference — superseded by the active, user-approved Roadmap V2 at `../the-time-cabinet-task-roadmap-v2.md`; `TC-001` is complete.
 
 ---
 
