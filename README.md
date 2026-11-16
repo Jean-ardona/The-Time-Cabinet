@@ -1,15 +1,27 @@
-# The Time Cabinet
+## Devvit React Starter
 
-A cosy daily historical mystery game built natively for Reddit with Devvit Web.
+A starter to build web applications on Reddit's developer platform
 
-## Project documents
+- [Devvit](https://developers.reddit.com/): A way to build and deploy immersive games on Reddit
+- [Vite](https://vite.dev/): For compiling the webView
+- [React](https://react.dev/): For UI
+- [Hono](https://hono.dev/): For backend logic
+- [Tailwind](https://tailwindcss.com/): For styles
+- [TypeScript](https://www.typescriptlang.org/): For type safety
 
-- [Game Bible V1](docs/the-time-cabinet-game-bible-v1.md) — product and technical specification.
-- [Approved Roadmap V2](docs/the-time-cabinet-task-roadmap-v2.md) — active 10-batch execution plan.
-- [Archived Roadmap V1](docs/archive/the-time-cabinet-task-roadmap-v1.md) — original task-level reference and acceptance criteria.
-- [Hackathon checklist](notes/hackathon-checklist.md) — registration, eligibility, deadlines and submission links.
+## Getting Started
 
-## Current status
+> Make sure you have Node 22 downloaded on your machine before running!
 
-- `TC-001`: complete and recorded.
-- Batch 1 (`TC-002–TC-010`): authorized; preflight started, currently blocked on manual prerequisites. No app implementation has started. See Roadmap V2 for scope and required actions.
+1. Run `npm create devvit@latest --template=react`
+2. Go through the installation wizard. You will need to create a Reddit account and connect it to Reddit developers
+3. Copy the command on the success page into your terminal
+
+## Commands
+
+- `npm run dev`: Starts a development server where you can develop your application live on Reddit.
+- `npm run build`: Builds your client and server projects
+- `npm run deploy`: Uploads a new version of your app
+- `npm run launch`: Publishes your app for review
+- `npm run login`: Logs your CLI into Reddit
+- `npm run type-check`: Type checks, lints, and prettifies your app
